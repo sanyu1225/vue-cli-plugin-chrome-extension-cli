@@ -1,4 +1,4 @@
-# vue-cli-plugin-chrome-extension-new
+# vue-cli-plugin-chrome-extension-cli
 
 [English](./README.md) | [简体中文](./README-zh_CN.md) | 繁體中文
 
