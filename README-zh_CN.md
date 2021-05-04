@@ -17,6 +17,8 @@
 
 该插件用于将新项目用于 chrome 扩展。
 
+![](https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/shell.gif)
+
 ## 使用方法?
 
 ```
@@ -26,6 +28,28 @@ cd <project-name>
 vue add vue-cli-plugin-chrome-extension-cli
 # 回答要建构的chrome extension问答
 # 🎉
+```
+
+## 资料夹结构
+
+```
+.
+├── public
+│   ├──  can set image.
+├── src/
+│   ├── assets
+│   │   └── Static assets
+│   ├── entry
+│   │   ├── options.js
+│   │   ├── popup.js
+│   │   ├── content.js
+│   │   └── background.js
+│   └── view
+│   │   ├── popup.vue
+│   │   └── options.vue
+│   ├── manifest.development.json
+│   └── manifest.production.json
+└── vue.config.js
 ```
 
 ### 本地开发 跟 生产模式

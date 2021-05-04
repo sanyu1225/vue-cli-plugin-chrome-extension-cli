@@ -30,6 +30,28 @@ vue add vue-cli-plugin-chrome-extension-cli
 # 🎉
 ```
 
+## File folder
+
+```
+.
+├── public
+│   ├──  can set image.
+├── src/
+│   ├── assets
+│   │   └── Static assets
+│   ├── entry
+│   │   ├── options.js
+│   │   ├── popup.js
+│   │   ├── content.js
+│   │   └── background.js
+│   └── view
+│   │   ├── popup.vue
+│   │   └── options.vue
+│   ├── manifest.development.json
+│   └── manifest.production.json
+└── vue.config.js
+```
+
 ### Run Development mode and Production
 
 - Run development mode with `npm run build-watch` and a `dist` file will be generated. Install [Extension Reloader](https://chrome.google.com/webstore/detail/extensions-reloader/fimgfedafeadlieiabdeeaodndnlbhid) to reload chrome extensions easily everytime you reload. (take note that when u change manifest.json file, it will not automatically load, you need to click update extension )
