@@ -1,13 +1,19 @@
 <template>
   <div class="main_app">
-    <h1>Hello popup</h1>
+    <h1>Hello {{msg}}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
-}
+  name: 'options',
+  data() {
+      return {
+        msg:'options'
+      }
+    },
+};
+
 </script>
 
 <style>

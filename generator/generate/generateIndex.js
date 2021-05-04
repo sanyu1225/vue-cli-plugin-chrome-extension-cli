@@ -1,38 +1,39 @@
+
 const generateIndexFile = (api, vueVersion, isTypeScript, componentsName) => {
     const fs = require("fs");
-    const onlyScriptFile = ['background', 'content']
-    // genrate options or popup vue index file
-    function createVueIndex() {
-        const renderPath = `./src/${componentsName}/index.${isTypeScript ? 'ts' : 'js'}`;
+    const utils = require('../utils')(api)
+    // const replaceFileString = utils.replaceFileString;
+
+    // genrate options or popup vue index and vue file
+    function createVueFile(api, vueVersion, isTypeScript, componentsName) {
+        // vue index
+        const renderPath = `./src/entry/${componentsName}.${isTypeScript ? 'ts' : 'js'}`;
         const renderTemplate = `../template/vueIndex/vue${vueVersion}Index.js`;
+        // vue file
+        const renderVuePath = `./src/view/${componentsName}.vue`;
+        const renderVueTemplate = `../template/vueFile/${componentsName}.vue`;
         api.render({
-            [renderPath]: renderTemplate
+            [renderPath]: renderTemplate,
+            [renderVuePath]: renderVueTemplate,
         })
     }
 
     switch (componentsName) {
+        // just only script file
         case 'background':
         case 'content':
-            // just only script file and folder
-            fs.mkdir(`src/${componentsName}`, (err) => {
-                if (!err) {
-                    fs.writeFileSync(
-                        `src/${componentsName}/index.${!isTypeScript ? 'js' : 'ts'}`,
-                        `console.log('hello world ${componentsName} todo something~')`,
-                        {
-                            encoding: "utf-8"
-                        }
-                    );
-                } else {
-                    console.log('err', err);
+            fs.writeFileSync(
+                `src/entry/${componentsName}.${!isTypeScript ? 'js' : 'ts'}`,
+                `console.log('hello world ${componentsName} todo something~')`,
+                {
+                    encoding: "utf-8"
                 }
-            })
+            );
             break;
         case 'options':
         case 'popup':
-            // create vue file
-            api.render(`../template/${componentsName}File`)
-            createVueIndex()
+            // create vueFile and vueIneex
+            createVueFile(api, vueVersion, isTypeScript, componentsName)
             break;
         default:
             throw new Error('componentsName was not found!')

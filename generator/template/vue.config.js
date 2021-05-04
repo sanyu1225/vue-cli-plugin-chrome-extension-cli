@@ -1,14 +1,14 @@
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const path = require("path");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
 
 // Generate pages object
-const pages = {};
+const pages = {}
 
-const chromeName = process.env.VUE_APP_FILE.split(",");
+const chromeName = process.env.VUE_APP_FILE.split(',')
 
 chromeName.forEach((name) => {
   pages[name] = {
-    entry: `src/${name}/`,
+    entry: `src/entry/${name}.js`,
     template: 'public/index.html',
     filename: `${name}.html`,
   }

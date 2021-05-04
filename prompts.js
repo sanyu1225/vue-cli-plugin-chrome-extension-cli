@@ -2,7 +2,7 @@ module.exports = [{
   name: "name",
   type: "input",
   message: "Name of the Chrome Extension?",
-  default: "chrome-ext"
+  default: "chrome-extension-name"
 },
 {
   name: "description",

@@ -2,19 +2,26 @@ const generateManifest = require("./generate/manifest");
 const generateIndex = require("./generate/generateIndex")
 const deleteFile = require("./generate/deleteFile")
 const generateEnv = require("./generate/generateEnv")
+const fs = require("fs");
 
-module.exports = (api, options, { vueVersion }) => {
+module.exports = async (api, options, { vueVersion }) => {
   const utils = require('./utils')(api)
   const isTypeScript = utils.isTypeScriptProject();
+  const replaceFileString = utils.replaceFileString;
   const { delete_file, components } = options;
-  // // create file
+  // // create file and empty folder
   api.render({
     './vue.config.js': './template/vue.config.js'
   });
-  // dynamic grenrate (popup background option content) index file
+  // create empty entry folder
+  fs.mkdir(`src/entry`, (err) => {
+    if (err) console.log('create entry folder error');
+  })
+  // dynamic grnerate components
   components.forEach(e => {
     generateIndex(api, vueVersion, isTypeScript, e);
   });
+
   const extPkg = {
     scripts: {
       "build-watch": "vue-cli-service build-watch --mode development"
@@ -41,4 +48,16 @@ module.exports = (api, options, { vueVersion }) => {
     if (delete_file) deleteFile(api.resolve("./"), isTypeScript);
 
   });
+  // Modify file content
+  api.afterInvoke(() => {
+    if (isTypeScript) {
+      replaceFileString("./vue.config.js", /\{name\}\.js/, '{name}.js', '{name}.ts')
+    }
+    components.forEach(e => {
+      if (e === 'popup' || e === 'options') {
+        const renderPath = `./src/entry/${e}.${isTypeScript ? 'ts' : 'js'}`;
+        replaceFileString(renderPath, /App\.vue/, 'App.vue', `../view/${e}.vue`)
+      }
+    });
+  })
 };
