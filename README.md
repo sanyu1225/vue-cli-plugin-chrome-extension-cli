@@ -4,6 +4,13 @@ English | [简体中文](./README-zh_CN.md) | [繁體中文](./README-zh_TW.md)
 
 Start a chrome extension project with Vue-CLI with ease!
 
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/logo.png" alt="Vue logo"></a></p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-cli-plugin-chrome-extension-cli"><img src="https://img.shields.io/github/package-json/v/sanyu1225/vue-cli-plugin-chrome-extension-cli" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vue-cli-plugin-chrome-extension-cli"><img src="https://img.shields.io/github/license/sanyu1225/vue-cli-plugin-chrome-extension-cli" alt="License"></a>
+</p>
+
 support vue2 vue3 TypeScript and JavaScript!
 
 ## Installation
@@ -38,4 +45,4 @@ Vue CLI prompt is based on [inquirer.js](https://github.com/SBoudrias/Inquirer.j
 
 ## License
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)

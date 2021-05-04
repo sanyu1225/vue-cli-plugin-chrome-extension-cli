@@ -2,7 +2,12 @@
 
 [English](./README.md) | [简体中文](./README-zh_CN.md) | 繁體中文
 
-[![npm version](https://badge.fury.io/js/vue-cli-plugin-chrome-ext.svg)](https://www.npmjs.com/package/vue-cli-plugin-chrome-ext)
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/logo.png" alt="Vue logo"></a></p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-cli-plugin-chrome-extension-cli"><img src="https://img.shields.io/github/package-json/v/sanyu1225/vue-cli-plugin-chrome-extension-cli" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vue-cli-plugin-chrome-extension-cli"><img src="https://img.shields.io/github/license/sanyu1225/vue-cli-plugin-chrome-extension-cli" alt="License"></a>
+</p>
 
 使用 Vue-CLI 輕鬆建構 chrome 插件
 
@@ -41,4 +46,4 @@ vue add vue-cli-plugin-chrome-extension-cli
 
 ## License
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)

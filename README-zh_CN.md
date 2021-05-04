@@ -4,6 +4,13 @@
 
 使用 Vue-CLI 轻松建构 chrome 扩展插件
 
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/logo.png" alt="Vue logo"></a></p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-cli-plugin-chrome-extension-cli"><img src="https://img.shields.io/github/package-json/v/sanyu1225/vue-cli-plugin-chrome-extension-cli" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vue-cli-plugin-chrome-extension-cli"><img src="https://img.shields.io/github/license/sanyu1225/vue-cli-plugin-chrome-extension-cli" alt="License"></a>
+</p>
+
 支援 vue2 vue3 TypeScript 跟 JavaScript!
 
 ## 安裝
@@ -39,4 +46,4 @@ vue add vue-cli-plugin-chrome-extension-cli
 
 ## License
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)
