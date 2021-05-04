@@ -4,7 +4,7 @@ English | [简体中文](./README-zh_CN.md) | [繁體中文](./README-zh_TW.md)
 
 Start a chrome extension project with Vue-CLI with ease!
 
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/logo.png" alt="Vue logo"></a></p>
+<p align="center"><a href="https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli" target="_blank" rel="noopener noreferrer"><img width="100" src="https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/logo.png" alt="Vue logo"></a></p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-cli-plugin-chrome-extension-cli"><img src="https://img.shields.io/github/package-json/v/sanyu1225/vue-cli-plugin-chrome-extension-cli" alt="Version"></a>
@@ -16,6 +16,8 @@ support vue2 vue3 TypeScript and JavaScript!
 ## Installation
 
 This plugin is meant for using new project for chrome extensions. Tested on default project of Vue, Vue with TypeScript
+
+![](https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/shell.gif)
 
 ## Usage?
 
