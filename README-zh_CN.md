@@ -16,7 +16,7 @@
 vue create <project-name>
 # 回答要建构的vue专案问答
 cd <project-name>
-vue add vue-cli-plugin-chrome-ext
+vue add vue-cli-plugin-chrome-extension-cli
 # 回答要建构的chrome extension问答
 # 🎉
 ```
@@ -26,18 +26,6 @@ vue add vue-cli-plugin-chrome-ext
 - 使用` npm run build-watch`运行开发模式，将生成一个`dist`文件。 安装[Extension Reloader](https://chrome.google.com/webstore/detail/extensions-reloader/fimgfedafeadlieiabdeeaodndnlbhid)，以便在热更新。 （注意，当您更改 manifest.json 文件时，它不会自动加载，您需要点选 extension 页面中的更新）
 
 - 生产模式 `npm run build`，并将其压缩成 zip 并部署到 chrome 商店中。
-
-## 開發
-
-### 測試
-
-#### Development
-
-当前，使用文件手动完成测试`./auto.sh`，通过`-r`指令，它将删除生成的初始文件。
-
-#### Production
-
-测试 npm 上的版本 可以执行 `./prod.sh`
 
 ### prompts.js
 

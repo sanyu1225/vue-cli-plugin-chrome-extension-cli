@@ -1,15 +1,15 @@
 {
   "name": "vue-cli-plugin-chrome-extension-cli",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "generate chrome extension with vue.js",
   "author": "sanyu1225 <pan831225@gmail.com>",
   "scripts": {},
   "dependencies": {},
   "devDependencies": {},
   "bugs": {
-    "url": "https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-easy/issues"
+    "url": "https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/issues"
   },
-  "homepage": "https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-easy#readme",
+  "homepage": "https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli#readme",
   "keywords": [
     "vue",
     "vue-cli",
@@ -20,6 +20,6 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-easy.git"
+    "url": "git+https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli.git"
   }
 }
