@@ -17,7 +17,7 @@ support vue2 vue3 TypeScript and JavaScript!
 
 This plugin is meant for using new project for chrome extensions. Tested on default project of Vue, Vue with TypeScript
 
-![](https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/shell.gif)
+![](https://sanyu1225.github.io/images/shell.gif)
 
 ## Usage?
 

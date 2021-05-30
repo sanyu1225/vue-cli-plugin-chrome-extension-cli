@@ -17,7 +17,7 @@
 
 該插件用於將新專案 用於 chrome extension 插件。
 
-![](https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/raw/main/shell.gif)
+![](https://sanyu1225.github.io/images/shell.gif)
 
 ## 使用方法?
 
