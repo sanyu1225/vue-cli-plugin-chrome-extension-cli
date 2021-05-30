@@ -1,0 +1,54 @@
+name: publish
+env:
+  CI: true
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  release:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15
+          registry-url: "https://npm.pkg.github.com"
+      # - name: install Package
+        # run: npm install
+      # - name: test
+      #   run: npm test
+      # Publish to npm if this version is not published
+      - name: Publish To NPM 📦
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+      # Push tag to GitHub if package.json version's tag is not tagged
+      - name: package-version
+        run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
+      - name: package-version-to-git-tag
+        uses: pkgdeps/git-tag-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          version: ${{ env.PACKAGE_VERSION }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
+
+  line-notify:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: line-notify📱
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: "https://notify-api.line.me/api/notify?message=%22vue-cli-plugin-chrome-extension-cli%22%20is%20success%20publish%20to%20NPM&stickerPackageId=6362&stickerId=11087920"
+          method: "POST"
+          contentType: 'application/x-www-form-urlencoded'
+          customHeaders: ${{ secrets.LINE_NOTIFY }}
