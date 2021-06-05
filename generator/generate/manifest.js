@@ -26,6 +26,9 @@ const generateManifest = (options, manifestPath) => {
   if (components.includes('options')) {
     manifestJson.options_page = "options.html"
   }
+  if (components.includes('devtools')) {
+    manifestJson.devtools_page = "devtools.html"
+  }
 
 
   // Production build of manifest.json

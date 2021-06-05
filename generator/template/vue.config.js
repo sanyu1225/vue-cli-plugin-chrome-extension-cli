@@ -16,7 +16,7 @@ chromeName.forEach((name) => {
 
 module.exports = {
   pages,
-  filenameHashing: false, //取消打包命名hash
+  filenameHashing: false,
   configureWebpack: {
     plugins: [
       CopyWebpackPlugin([

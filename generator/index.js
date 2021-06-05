@@ -28,6 +28,11 @@ module.exports = async (api, options, { vueVersion }) => {
     },
     devDependencies: {
       "copy-webpack-plugin": "^4.6.0"
+    },
+    eslintConfig: {
+      env: {
+        "webextensions": true
+     }
     }
   };
 
@@ -54,7 +59,9 @@ module.exports = async (api, options, { vueVersion }) => {
       replaceFileString("./vue.config.js", /\{name\}\.js/, '{name}.js', '{name}.ts')
     }
     components.forEach(e => {
-      if (e === 'popup' || e === 'options') {
+      const whiteList = ['popup','options','devtools']
+      if (whiteList.includes(e)) {
+        console.log('in whiteList',e);
         const renderPath = `./src/entry/${e}.${isTypeScript ? 'ts' : 'js'}`;
         replaceFileString(renderPath, /App\.vue/, 'App.vue', `../view/${e}.vue`)
       }

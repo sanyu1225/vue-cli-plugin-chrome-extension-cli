@@ -36,7 +36,8 @@ module.exports = [{
     "background",
     "popup",
     "content",
-    "options"
+    "options",
+    "devtools"
   ],
   default: ['popup', 'content'],
 }];
