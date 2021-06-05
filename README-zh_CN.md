@@ -33,6 +33,7 @@ vue add vue-cli-plugin-chrome-extension-cli
 ## 资料夹结构
 
 ```
+.
 ├── public
 │   ├──  can set image.
 ├── src/
