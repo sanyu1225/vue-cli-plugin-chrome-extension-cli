@@ -33,6 +33,7 @@ vue add vue-cli-plugin-chrome-extension-cli
 ## 資料夾結構
 
 ```
+.
 ├── public
 │   ├──  can set image.
 ├── src/
