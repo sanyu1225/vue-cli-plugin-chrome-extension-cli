@@ -1,11 +1,24 @@
-
-const generateIndexFile = (api, vueVersion, isTypeScript, componentsName) => {
+const generateIndexFile = async (api, vueVersion, isTypeScript, componentsName) => {
     const fs = require("fs");
-    const utils = require('../utils')(api)
-    // const replaceFileString = utils.replaceFileString;
+    
+    /** devtools should add chrome api */
+    function addDevToolsFnc(api,isTypeScript){
+        api.afterInvoke(() => {
+            const { EOL } = require('os')
+            const fs = require('fs')
+            const path = `./src/entry/devtools.${isTypeScript ? 'ts' : 'js'}`
+            const contentMain = fs.readFileSync(path, { encoding: 'utf-8' })
+            const lines = contentMain.split(/\r?\n/g)
+        
+            // const renderIndex = lines.findIndex(line => line.match(/render/))
+            lines[2] += `chrome.devtools.panels.create('Devtool', '', 'devtools.html')`
+        
+            fs.writeFileSync(path, lines.join(EOL), { encoding: 'utf-8' })
+            })
+    }
 
     // genrate options or popup vue index and vue file
-    function createVueFile(api, vueVersion, isTypeScript, componentsName) {
+    async function createVueFile(api, vueVersion, isTypeScript, componentsName) {
         // vue index
         const renderPath = `./src/entry/${componentsName}.${isTypeScript ? 'ts' : 'js'}`;
         const renderTemplate = `../template/vueIndex/vue${vueVersion}Index.js`;
@@ -16,6 +29,7 @@ const generateIndexFile = (api, vueVersion, isTypeScript, componentsName) => {
             [renderPath]: renderTemplate,
             [renderVuePath]: renderVueTemplate,
         })
+        
     }
 
     switch (componentsName) {
@@ -32,13 +46,17 @@ const generateIndexFile = (api, vueVersion, isTypeScript, componentsName) => {
             break;
         case 'options':
         case 'popup':
+        case 'devtools':
             // create vueFile and vueIneex
-            createVueFile(api, vueVersion, isTypeScript, componentsName)
+            await createVueFile(api, vueVersion, isTypeScript, componentsName)
+            if(componentsName === 'devtools'){
+                addDevToolsFnc(api,isTypeScript)
+            }
             break;
         default:
             throw new Error('componentsName was not found!')
     }
-
+ 
 
 };
 

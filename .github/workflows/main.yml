@@ -5,9 +5,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+
 jobs:
   release:
     name: Setup
@@ -21,7 +19,7 @@ jobs:
           node-version: 15
           registry-url: "https://npm.pkg.github.com"
       # - name: install Package
-        # run: npm install
+      # run: npm install
       # - name: test
       #   run: npm test
       # Publish to npm if this version is not published
@@ -50,5 +48,5 @@ jobs:
         with:
           url: "https://notify-api.line.me/api/notify?message=%22vue-cli-plugin-chrome-extension-cli%22%20is%20success%20publish%20to%20NPM&stickerPackageId=6362&stickerId=11087920"
           method: "POST"
-          contentType: 'application/x-www-form-urlencoded'
+          contentType: "application/x-www-form-urlencoded"
           customHeaders: ${{ secrets.LINE_NOTIFY }}
