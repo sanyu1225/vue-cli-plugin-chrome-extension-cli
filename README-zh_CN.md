@@ -42,11 +42,13 @@ vue add vue-cli-plugin-chrome-extension-cli
 │   ├── entry
 │   │   ├── options.js
 │   │   ├── popup.js
+|   |   ├── devtools.js
 │   │   ├── content.js
 │   │   └── background.js
 │   └── view
 │   │   ├── popup.vue
-│   │   └── options.vue
+│   │   ├── options.vue
+|   |   └── devtools.vue
 │   ├── manifest.development.json
 │   └── manifest.production.json
 └── vue.config.js
