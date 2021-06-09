@@ -7,12 +7,12 @@
 <script>
 export default {
   name: 'devtools',
-  data() {
-      return {
-        msg:'devdools'
-      }
-    },
-};
+  data () {
+    return {
+      msg: 'devdools'
+    }
+  }
+}
 
 </script>
 

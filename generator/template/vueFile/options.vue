@@ -7,12 +7,12 @@
 <script>
 export default {
   name: 'options',
-  data() {
-      return {
-        msg:'options'
-      }
-    },
-};
+  data () {
+    return {
+      msg: 'options'
+    }
+  }
+}
 
 </script>
 

@@ -7,12 +7,12 @@
 <script>
 export default {
   name: 'popup',
-  data() {
-      return {
-        msg:'popup'
-      }
-    },
-};
+  data () {
+    return {
+      msg: 'popup'
+    }
+  }
+}
 
 </script>
 

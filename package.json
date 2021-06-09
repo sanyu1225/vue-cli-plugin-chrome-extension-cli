@@ -5,7 +5,11 @@
   "author": "sanyu1225 <pan831225@gmail.com>",
   "scripts": {},
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@vue/eslint-config-standard": "^3.0.0",
+    "eslint": "^5.1.0",
+    "eslint-plugin-vue": "^4.5.0"
+  },
   "bugs": {
     "url": "https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli/issues"
   },

@@ -10,7 +10,7 @@ chromeName.forEach((name) => {
   pages[name] = {
     entry: `src/entry/${name}.js`,
     template: 'public/index.html',
-    filename: `${name}.html`,
+    filename: `${name}.html`
   }
 })
 
@@ -22,13 +22,13 @@ module.exports = {
       CopyWebpackPlugin([
         {
           from: path.resolve(`src/manifest.${process.env.NODE_ENV}.json`),
-          to: `${path.resolve('dist')}/manifest.json`,
-        },
-      ]),
+          to: `${path.resolve('dist')}/manifest.json`
+        }
+      ])
     ],
     output: {
       filename: `js/[name].js`,
-      chunkFilename: `[name].js`,
-    },
-  },
+      chunkFilename: `[name].js`
+    }
+  }
 }

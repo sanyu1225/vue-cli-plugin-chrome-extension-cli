@@ -1,50 +1,39 @@
-const editTsConfig = (path) => {
-  const fs = require("fs");
-  const tsconfigPath = `${path}/tsconfig.json`;
+const fs = require('fs')
 
-  function updateTsConfig(json) {
-    console.log("write file");
-    fs.writeFileSync(tsconfigPath, JSON.stringify(json, null, 4), {
-      encoding: "utf-8",
-    });
+module.exports = (path) => {
+  if (!fs.existsSync(path)) return
+
+  function updateTsConfig (json) {
+    fs.writeFileSync(path, JSON.stringify(json, null, 4), {
+      encoding: 'utf-8'
+    })
   }
 
-  console.log(fs.existsSync(tsconfigPath));
+  const tsConfigFile = fs.readFileSync(path)
+  const tsConfigJson = JSON.parse(tsConfigFile)
 
-  if (fs.existsSync(tsconfigPath)) {
-    let userConfig = fs.readFileSync(tsconfigPath);
-
-    userConfig = JSON.parse(userConfig);
-
-    let newConfig = userConfig;
-
-    //No compilerOptions before
-    if (!userConfig.hasOwnProperty("compilerOptions")) {
-      newSettings = {
-        ...userConfig,
-        ...{
-          compilerOptions: {
-            types: ["chrome"],
-          },
-        },
-      };
-      updateTsConfig(newConfig);
-      return;
+  // No compilerOptions before
+  if (!tsConfigJson.hasOwnProperty('compilerOptions')) {
+    const newConfig = {
+      ...tsConfigJson,
+      ...{
+        compilerOptions: {
+          types: ['chrome']
+        }
+      }
     }
-
-    //Have compilerOptions before and have types options already
-    if (userConfig.compilerOptions.hasOwnProperty("types")) {
-      //Push chrome types in it
-      userConfig.compilerOptions.types.push("chrome");
-      updateTsConfig(newConfig);
-      return;
-    }
-
-    //Have compilerOptions before and but no types options before
-    userConfig.compilerOptions.types = ["chrome"];
-    updateTsConfig(newConfig);
-    return;
+    updateTsConfig(newConfig)
+    return
   }
-};
 
-module.exports = editTsConfig;
+  // Have compilerOptions before and have types options already
+  if (tsConfigJson.compilerOptions.hasOwnProperty('types')) {
+    // Push chrome types
+    tsConfigJson.compilerOptions.types.push('chrome')
+    updateTsConfig(tsConfigJson)
+    return
+  }
+  // Have compilerOptions before and but no types options before
+  tsConfigJson.compilerOptions.types = ['chrome']
+  updateTsConfig(tsConfigJson)
+}
