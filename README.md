@@ -25,7 +25,7 @@ This plugin is meant for using new project for chrome extensions. Tested on defa
 vue create <project-name>
 # Answer some questions
 cd <project-name>
-vue add vue-cli-plugin-chrome-extension-cli
+vue add chrome-extension-cli
 # Answer some questions
 # 🎉
 ```
