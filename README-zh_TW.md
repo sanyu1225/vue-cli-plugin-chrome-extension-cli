@@ -25,7 +25,7 @@
 vue create <project-name>
 # 回答要建構的vue專案問答
 cd <project-name>
-vue add vue-cli-plugin-chrome-extension-cli
+vue add chrome-extension-cli
 # 回答要建構的chrome extension問答
 # 🎉
 ```
