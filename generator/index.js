@@ -3,7 +3,6 @@ const generateIndex = require('./generate/generateIndex')
 const deleteFile = require('./generate/deleteFile')
 const editTsConfig = require('./generate/editTsConfig')
 const editPackage = require('./generate/editPackage')
-const generateEnv = require('./generate/generateEnv')
 const fs = require('fs')
 
 module.exports = async (api, options, { vueVersion }) => {
@@ -31,7 +30,6 @@ module.exports = async (api, options, { vueVersion }) => {
 
   api.onCreateComplete(() => {
     generateManifest(options, api.resolve('./src')) // add manifest.json
-    generateEnv(api.resolve('./'), components) // add env file
     // edit tsconfig.json
     if (isTypeScript) editTsConfig(api.resolve('./tsconfig.json'))
     // delete vue Initial file
@@ -40,9 +38,6 @@ module.exports = async (api, options, { vueVersion }) => {
 
   // Modify file content
   api.afterInvoke(() => {
-    if (isTypeScript) {
-      replaceFileString('./vue.config.js', /\{name\}\.js/, '{name}.js', '{name}.ts')
-    }
     components.forEach((e) => {
       const whiteList = ['popup', 'options', 'devtools']
       if (whiteList.includes(e)) {
