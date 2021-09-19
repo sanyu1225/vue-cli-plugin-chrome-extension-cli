@@ -57,8 +57,8 @@ vue add chrome-extension-cli
 ### Run Development mode and Production
 
 - Run development mode with `npm run build-watch` and a `dist` file will be generated. Install [Extension Reloader](https://chrome.google.com/webstore/detail/extensions-reloader/fimgfedafeadlieiabdeeaodndnlbhid) to reload chrome extensions easily everytime you reload. (take note that when u change manifest.json file, it will not automatically load, you need to click update extension )
+- ### manifest_version 3 can't use `npm run build-watch` beacause version 3 can't support [CSP](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy)
 - Build for production `npm run build` and zip it and deploy onto chrome store.
-
 ### prompts.js
 
 Vue CLI prompt is based on [inquirer.js](https://github.com/SBoudrias/Inquirer.js) api.

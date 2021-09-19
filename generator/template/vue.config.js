@@ -1,16 +1,27 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
+const fs = require('fs')
 
 // Generate pages object
 const pages = {}
 
-const chromeName = process.env.VUE_APP_FILE.split(',')
+function getEntryFile (entryPath) {
+  let files = fs.readdirSync(entryPath)
+  return files
+}
 
+const chromeName = getEntryFile(path.resolve(`src/entry`))
+
+function getFileExtension (filename) {
+  return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined
+}
 chromeName.forEach((name) => {
-  pages[name] = {
-    entry: `src/entry/${name}.js`,
+  const fileExtension = getFileExtension(name)
+  const fileName = name.replace('.' + fileExtension, '')
+  pages[fileName] = {
+    entry: `src/entry/${name}`,
     template: 'public/index.html',
-    filename: `${name}.html`
+    filename: `${fileName}.html`
   }
 })
 
