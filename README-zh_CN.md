@@ -57,7 +57,7 @@ vue add chrome-extension-cli
 ### 本地开发 跟 生产模式
 
 - 使用` npm run build-watch`运行开发模式，将生成一个`dist`文件。 安装[Extension Reloader](https://chrome.google.com/webstore/detail/extensions-reloader/fimgfedafeadlieiabdeeaodndnlbhid)，以便在热更新。 （注意，当您更改 manifest.json 文件时，它不会自动加载，您需要点选 extension 页面中的更新）
-
+- ### manifest版本 3 不支援使用 `npm run build-watch` 因为 manifest版本 3不支援 [CSP](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy)
 - 生产模式 `npm run build`，并将其压缩成 zip 并部署到 chrome 商店中。
 
 ### prompts.js

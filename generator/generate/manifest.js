@@ -7,27 +7,58 @@ const generateManifest = (options, manifestPath) => {
     description,
     version
   }
-
-  if (components.includes('background')) {
-    manifestJson.background = {
-      'scripts': ['/js/background.js'],
-      'persistent': false
-    }
+  const mf2_Key = {
+    'background': 'background',
+    'popup': 'browser_action',
+    'content': 'content_scripts',
+    'options': 'options_page',
+    'devtools': 'devtools_page'
   }
-  if (components.includes('popup')) {
-    manifestJson.browser_action = { default_popup: 'popup.html' }
+  const mf3_Key = {
+    'background': 'background',
+    'popup': 'action',
+    'content': 'action',
+    'options': 'options_page',
+    'devtools': 'devtools_page'
   }
-  if (components.includes('content')) {
-    manifestJson.content_scripts = [{
+  const mf3_content = {
+    'background': {
+      'service_worker': '/js/background.js'
+    },
+    'action': {
+      'default_popup': 'popup.html'
+    },
+    'content_scripts': [{
       'matches': ['<all_urls>'],
       'js': ['/js/content.js']
-    }]
+    }],
+    'options_page': 'options.html',
+    'devtools_page': 'devtools.html'
   }
-  if (components.includes('options')) {
-    manifestJson.options_page = 'options.html'
+  const mf2_content = {
+    'background': {
+      'scripts': ['/js/background.js'],
+      'persistent': false
+    },
+    'browser_action': { default_popup: 'popup.html' },
+    'content_scripts': [{
+      'matches': ['<all_urls>'],
+      'js': ['/js/content.js']
+    }],
+    'options_page': 'options.html',
+    'devtools_page': 'devtools.html'
   }
-  if (components.includes('devtools')) {
-    manifestJson.devtools_page = 'devtools.html'
+  if (manifest_version === 3) {
+    components.forEach(element => {
+      manifestJson[mf3_Key[element]] = mf3_content[mf3_Key[element]]
+    })
+  } else {
+    components.forEach(element => {
+      manifestJson[mf2_Key[element]] = mf2_content[mf2_Key[element]]
+    })
+    // Development build of manifest.json
+    manifestJson['content_security_policy'] =
+    "script-src 'self' 'unsafe-eval'; object-src 'self'"
   }
 
   // Production build of manifest.json
@@ -38,9 +69,7 @@ const generateManifest = (options, manifestPath) => {
       encoding: 'utf-8'
     }
   )
-  // Development build of manifest.json
-  manifestJson['content_security_policy'] =
-    "script-src 'self' 'unsafe-eval'; object-src 'self'"
+
   fs.writeFileSync(
     `${manifestPath}/manifest.development.json`,
     JSON.stringify(manifestJson, null, 4),
