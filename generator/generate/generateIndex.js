@@ -1,4 +1,4 @@
-const generateIndexFile = async (api, vueVersion, isTypeScript, componentsName, name) => {
+const generateIndexFile = async (api, vueVersion = 3, isTypeScript, componentsName, name) => {
   const fs = require('fs')
 
   /** devtools should add chrome api */
