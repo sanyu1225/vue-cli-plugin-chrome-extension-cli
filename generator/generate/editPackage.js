@@ -2,7 +2,7 @@
 module.exports = (api, isTypeScript) => {
   const extPkg = {
     scripts: {
-      'build-watch': 'vue-cli-service build-watch --mode development'
+      'build-watch': 'vue-cli-service  --env.NODE_ENV=development build-watch --mode development'
     },
     devDependencies: {
       'copy-webpack-plugin': '^4.6.0'
