@@ -25,6 +25,8 @@ chromeName.forEach((name) => {
   }
 })
 
+const isDevMode = process.env.NODE_ENV === 'development'
+
 module.exports = {
   pages,
   filenameHashing: false,
@@ -40,6 +42,7 @@ module.exports = {
     output: {
       filename: `js/[name].js`,
       chunkFilename: `[name].js`
-    }
+    },
+    devtool: isDevMode ? 'inline-source-map' : false,
   }
 }
