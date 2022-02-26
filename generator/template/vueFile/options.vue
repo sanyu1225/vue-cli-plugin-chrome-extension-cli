@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'options',
+  name: 'optionsView',
   data () {
     return {
       msg: 'options'

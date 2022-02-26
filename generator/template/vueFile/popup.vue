@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'popup',
+  name: 'popupView',
   data () {
     return {
       msg: 'popup'

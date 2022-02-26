@@ -4,9 +4,6 @@ module.exports = (api, isTypeScript) => {
     scripts: {
       'build-watch': 'vue-cli-service  --env.NODE_ENV=development build-watch --mode development'
     },
-    devDependencies: {
-      'copy-webpack-plugin': '^4.6.0'
-    },
     eslintConfig: {
       env: {
         webextensions: true
@@ -17,7 +14,7 @@ module.exports = (api, isTypeScript) => {
   if (isTypeScript) {
     extPkg.devDependencies = {
       ...extPkg.devDependencies,
-      '@types/chrome': '^0.0.75'
+      '@types/chrome': '^0.0.179'
     }
   }
 
