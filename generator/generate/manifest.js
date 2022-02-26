@@ -17,7 +17,7 @@ const generateManifest = (options, manifestPath) => {
   const mf3_Key = {
     'background': 'background',
     'popup': 'action',
-    'content': 'action',
+    'content': 'content_scripts',
     'options': 'options_page',
     'devtools': 'devtools_page'
   }

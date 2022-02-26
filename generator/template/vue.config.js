@@ -1,4 +1,3 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const fs = require('fs')
 
@@ -13,7 +12,7 @@ function getEntryFile (entryPath) {
 const chromeName = getEntryFile(path.resolve(`src/entry`))
 
 function getFileExtension (filename) {
-  return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined
+  return /[.]/.exec(filename) ? /[^.]+$/.exec(filename)[0] : undefined
 }
 chromeName.forEach((name) => {
   const fileExtension = getFileExtension(name)
@@ -30,19 +29,23 @@ const isDevMode = process.env.NODE_ENV === 'development'
 module.exports = {
   pages,
   filenameHashing: false,
+  chainWebpack: (config) => {
+    config.plugin('copy').use(require('copy-webpack-plugin'), [
+      {
+        patterns: [
+          {
+            from: path.resolve(`src/manifest.${process.env.NODE_ENV}.json`),
+            to: `${path.resolve('dist')}/manifest.json`
+          }
+        ]
+      }
+    ])
+  },
   configureWebpack: {
-    plugins: [
-      CopyWebpackPlugin([
-        {
-          from: path.resolve(`src/manifest.${process.env.NODE_ENV}.json`),
-          to: `${path.resolve('dist')}/manifest.json`
-        }
-      ])
-    ],
     output: {
       filename: `js/[name].js`,
       chunkFilename: `[name].js`
     },
-    devtool: isDevMode ? 'inline-source-map' : false,
+    devtool: isDevMode ? 'inline-source-map' : false
   }
 }
