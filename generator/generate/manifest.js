@@ -48,23 +48,35 @@ const generateManifest = (options, manifestPath) => {
     'options_page': 'options.html',
     'devtools_page': 'devtools.html'
   }
+
+  const prodJSON = JSON.parse(JSON.stringify(manifestJson))
+  const devJSON = JSON.parse(JSON.stringify(manifestJson))
+
   if (manifest_version === 3) {
     components.forEach(element => {
-      manifestJson[mf3_Key[element]] = mf3_content[mf3_Key[element]]
+      prodJSON[mf3_Key[element]] = mf3_content[mf3_Key[element]]
+      devJSON[mf3_Key[element]] = mf3_content[mf3_Key[element]]
+      if (element === 'content') {
+        prodJSON['content_scripts'] = [{
+          'matches': ['<all_urls>'],
+          'js': ['/js/content.js'],
+          'css': ['/js/content.css']
+        }]
+      }
     })
   } else {
     components.forEach(element => {
-      manifestJson[mf2_Key[element]] = mf2_content[mf2_Key[element]]
+      prodJSON[mf2_Key[element]] = mf2_content[mf2_Key[element]]
+      devJSON[mf2_Key[element]] = mf2_content[mf2_Key[element]]
     })
-    // Development build of manifest.json
-    manifestJson['content_security_policy'] =
+    devJSON['content_security_policy'] =
     "script-src 'self' 'unsafe-eval'; object-src 'self'"
   }
 
-  // Production build of manifest.json
+  /** create dev and prod manifest */
   fs.writeFileSync(
     `${manifestPath}/manifest.production.json`,
-    JSON.stringify(manifestJson, null, 4),
+    JSON.stringify(prodJSON, null, 4),
     {
       encoding: 'utf-8'
     }
@@ -72,7 +84,7 @@ const generateManifest = (options, manifestPath) => {
 
   fs.writeFileSync(
     `${manifestPath}/manifest.development.json`,
-    JSON.stringify(manifestJson, null, 4),
+    JSON.stringify(devJSON, null, 4),
     {
       encoding: 'utf-8'
     }
