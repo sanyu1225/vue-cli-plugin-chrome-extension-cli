@@ -23,27 +23,27 @@ const generateManifest = (options, manifestPath) => {
   }
   const mf3_content = {
     'background': {
-      'service_worker': '/js/background.js'
+      'service_worker': '/background.js'
     },
     'action': {
       'default_popup': 'popup.html'
     },
     'content_scripts': [{
       'matches': ['<all_urls>'],
-      'js': ['/js/content.js']
+      'js': ['/content.js']
     }],
     'options_page': 'options.html',
     'devtools_page': 'devtools.html'
   }
   const mf2_content = {
     'background': {
-      'scripts': ['/js/background.js'],
+      'scripts': ['/background.js'],
       'persistent': false
     },
     'browser_action': { default_popup: 'popup.html' },
     'content_scripts': [{
       'matches': ['<all_urls>'],
-      'js': ['/js/content.js']
+      'js': ['/content.js']
     }],
     'options_page': 'options.html',
     'devtools_page': 'devtools.html'
@@ -56,13 +56,6 @@ const generateManifest = (options, manifestPath) => {
     components.forEach(element => {
       prodJSON[mf3_Key[element]] = mf3_content[mf3_Key[element]]
       devJSON[mf3_Key[element]] = mf3_content[mf3_Key[element]]
-      if (element === 'content') {
-        prodJSON['content_scripts'] = [{
-          'matches': ['<all_urls>'],
-          'js': ['/js/content.js'],
-          'css': ['/js/content.css']
-        }]
-      }
     })
   } else {
     components.forEach(element => {
