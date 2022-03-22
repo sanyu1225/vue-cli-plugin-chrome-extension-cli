@@ -12,7 +12,8 @@ Start a chrome extension project with Vue-CLI with ease!
 </p>
 
 support vue2 vue3 TypeScript and JavaScript!
-
+## Requirements
+vue-cli 5.0.1 or higher 
 ## Installation
 
 This plugin is meant for using new project for chrome extensions. Tested on default project of Vue, Vue with TypeScript
