@@ -25,9 +25,6 @@ const deleteFile = (path, isTypeScript) => {
   try {
     // remove main.js
     fs.unlinkSync(`${path}/src/main.${isTypeScript ? 'ts' : 'js'}`)
-    // remove public/index.html & public/favicon.ico
-    fs.unlinkSync(`${path}/public/index.html`)
-    fs.unlinkSync(`${path}/public/favicon.ico`)
     // remove App.vue
     fs.unlinkSync(`${path}/src/App.vue`)
     // remove components
