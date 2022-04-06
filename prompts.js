@@ -20,13 +20,13 @@ module.exports = [{
   type: 'list',
   message: 'manifest_version for the Chrome Extension?',
   choices: [
-    2, 3
+    3, 2
   ],
   default: [3]
 }, {
   name: 'deleteInitFile',
   type: 'confirm',
-  message: 'delete Initial file? (src/main.js src/components public/index.html public/favicon)',
+  message: 'delete Initial file? (src/main.js src/components)',
   default: true
 }, {
   name: 'components',

@@ -36,6 +36,10 @@ module.exports = {
           {
             from: path.resolve(`src/manifest.${process.env.NODE_ENV}.json`),
             to: `${path.resolve('dist')}/manifest.json`
+          },
+          {
+            from: path.resolve(`public/`),
+            to: `${path.resolve('dist')}/`
           }
         ]
       }
