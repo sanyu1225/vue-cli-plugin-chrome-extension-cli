@@ -13,7 +13,7 @@
 
 支援 vue2 vue3 TypeScript 跟 JavaScript!
 ## 版本要求
-vue-cli 5.0.1 或更高 
+[vue-cli](https://cli.vuejs.org/) 5.0.1 或更高 
 ## 安裝
 
 該插件用於將新專案 用於 chrome extension 插件。
